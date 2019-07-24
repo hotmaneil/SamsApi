@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BarrierFreePassengerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RealName" Type="nvarchar(max)" />
+          <Property Name="Local_Calls" Type="nvarchar(max)" />
+          <Property Name="Phone_Calls" Type="nvarchar(max)" />
+          <Property Name="Address1" Type="nvarchar(max)" />
+          <Property Name="Address2" Type="nvarchar(max)" />
+          <Property Name="Birth" Type="datetime" />
+          <Property Name="IsEnterprise" Type="bit" Nullable="false" />
+          <Property Name="TaxId" Type="nvarchar(max)" />
+          <Property Name="Newsletter" Type="bit" Nullable="false" />
+          <Property Name="SMSletter" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="RegisterDate" Type="datetime" />
+          <Property Name="resetPW" Type="bit" />
+          <Property Name="TaxiCompanyGroupId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingDate" Type="datetime" Nullable="false" />
+          <Property Name="PassengerId" Type="nvarchar" MaxLength="128" />
+          <Property Name="TaxId" Type="nvarchar" MaxLength="10" />
+          <Property Name="Start_Address" Type="nvarchar" MaxLength="128" />
+          <Property Name="Start_Latitude" Type="float" />
+          <Property Name="Start_Longitude" Type="float" />
+          <Property Name="Target_Address" Type="nvarchar" MaxLength="128" />
+          <Property Name="Target_Latitude" Type="float" />
+          <Property Name="Target_Longitude" Type="float" />
+          <Property Name="Distance" Type="int" />
+          <Property Name="EstimatedFare" Type="int" />
+          <Property Name="EstimatedTime" Type="int" />
+          <Property Name="ProcessStatus" Type="tinyint" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="DeviceId" Type="int" />
+          <Property Name="AcceptTime" Type="datetime" />
+          <Property Name="IsCancel" Type="bit" Nullable="false" />
+          <Property Name="CancelBy" Type="int" />
+          <Property Name="CancelTime" Type="datetime" />
+          <Property Name="OrderNo" Type="uniqueidentifier" />
+          <Property Name="TaxiId" Type="int" />
+          <Property Name="DriverId" Type="int" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="256" />
+          <Property Name="ServiceId" Type="int" />
+          <Property Name="AdditionMessage" Type="nvarchar" MaxLength="255" />
+          <Property Name="BuyerIdentifier" Type="nvarchar" MaxLength="10" />
+          <Property Name="TaxiCompanyGroupId" Type="int" />
+          <Property Name="CreateAccount" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="DispatchStatus">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="DeviceId" Type="nvarchar" MaxLength="128" />
+          <Property Name="OrderTime" Type="datetime" />
+          <Property Name="DispatchTime" Type="datetime" />
+          <Property Name="IsCancel" Type="bit" />
+          <Property Name="CancelFrom" Type="int" />
+          <Property Name="FlowStatus" Type="int" />
+          <Property Name="GetonTime" Type="datetime" />
+          <Property Name="GetoffTime" Type="datetime" />
+          <Property Name="ArrivalTime" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="PromiseMinute" Type="int" />
+        </EntityType>
+        <EntityType Name="UserExtendBarriers">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="IdentityNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="Economic" Type="int" Nullable="false" />
+          <Property Name="FullPayment" Type="bit" Nullable="false" />
+          <Property Name="Aborigines" Type="bit" Nullable="false" />
+          <Property Name="Student" Type="bit" Nullable="false" />
+          <Property Name="PostalCode1" Type="varchar" MaxLength="20" />
+          <Property Name="PostalCode2" Type="varchar" MaxLength="20" />
+          <Property Name="BarriersManual" Type="int" Nullable="false" />
+          <Property Name="DateOfExpiry" Type="datetime" />
+          <Property Name="BarriersLevel" Type="int" Nullable="false" />
+          <Property Name="BarriersCategory" Type="int" Nullable="false" />
+          <Property Name="BarriersCode" Type="nvarchar" MaxLength="30" />
+          <Property Name="Diagnostic" Type="int" Nullable="false" />
+          <Property Name="ReservationDays" Type="int" Nullable="false" />
+          <Property Name="SuspensionBegin" Type="datetime" />
+          <Property Name="SuspensionEnd" Type="datetime" />
+          <Property Name="CarPool" Type="bit" Nullable="false" />
+          <Property Name="Wheelchair" Type="bit" Nullable="false" />
+          <Property Name="WheelchairCategory" Type="int" Nullable="false" />
+          <Property Name="VisualDisturbance" Type="bit" Nullable="false" />
+          <Property Name="isLongCare" Type="bit" />
+          <Property Name="LongTermDisability" Type="int" Nullable="false" />
+          <Property Name="RelationshipName" Type="nvarchar" MaxLength="128" />
+          <Property Name="Relation" Type="nvarchar" MaxLength="128" />
+          <Property Name="EmergencyPhone" Type="nvarchar" MaxLength="128" />
+          <Property Name="DisabilityPhoto" Type="nvarchar" MaxLength="128" />
+          <Property Name="EconomicStatusPhoto" Type="nvarchar" MaxLength="128" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="isDisabled" Type="bit" />
+          <Property Name="DisabledTime" Type="datetime" />
+          <Property Name="insDateTime" Type="datetime" />
+          <Property Name="updDateTime" Type="datetime" />
+          <Property Name="SubsidyLimitAmtMon" Type="decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="SubsidyTripMon" Type="int" Nullable="false" />
+          <Property Name="OnlineBooking" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BarrierFreePassengerModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DispatchStatus" EntityType="Self.DispatchStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserExtendBarriers" EntityType="Self.UserExtendBarriers" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BarrierFreePassengerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="UserExtendBarriers">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdentityNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Economic" Type="Int32" Nullable="false" />
+          <Property Name="FullPayment" Type="Boolean" Nullable="false" />
+          <Property Name="Aborigines" Type="Boolean" Nullable="false" />
+          <Property Name="Student" Type="Boolean" Nullable="false" />
+          <Property Name="PostalCode1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BarriersManual" Type="Int32" Nullable="false" />
+          <Property Name="DateOfExpiry" Type="DateTime" Precision="3" />
+          <Property Name="BarriersLevel" Type="Int32" Nullable="false" />
+          <Property Name="BarriersCategory" Type="Int32" Nullable="false" />
+          <Property Name="BarriersCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Diagnostic" Type="Int32" Nullable="false" />
+          <Property Name="ReservationDays" Type="Int32" Nullable="false" />
+          <Property Name="SuspensionBegin" Type="DateTime" Precision="3" />
+          <Property Name="SuspensionEnd" Type="DateTime" Precision="3" />
+          <Property Name="CarPool" Type="Boolean" Nullable="false" />
+          <Property Name="Wheelchair" Type="Boolean" Nullable="false" />
+          <Property Name="WheelchairCategory" Type="Int32" Nullable="false" />
+          <Property Name="VisualDisturbance" Type="Boolean" Nullable="false" />
+          <Property Name="isLongCare" Type="Boolean" />
+          <Property Name="LongTermDisability" Type="Int32" Nullable="false" />
+          <Property Name="RelationshipName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Relation" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyPhone" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DisabilityPhoto" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="EconomicStatusPhoto" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isDisabled" Type="Boolean" />
+          <Property Name="DisabledTime" Type="DateTime" Precision="3" />
+          <Property Name="insDateTime" Type="DateTime" Precision="3" />
+          <Property Name="updDateTime" Type="DateTime" Precision="3" />
+          <Property Name="SubsidyLimitAmtMon" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="SubsidyTripMon" Type="Int32" Nullable="false" />
+          <Property Name="OnlineBooking" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BarrierFreePassengerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserExtendBarriers" EntityType="Self.UserExtendBarriers" />
+          <EntitySet Name="Booking" EntityType="BarrierFreePassengerModel.Booking" />
+          <FunctionImport Name="GetBookingById" ReturnType="Collection(BarrierFreePassengerModel.GetBookingById_Result)">
+          <Parameter Name="BookingId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="AspNetUsers" EntityType="BarrierFreePassengerModel.AspNetUsers" />
+          <EntitySet Name="DispatchStatus" EntityType="BarrierFreePassengerModel.DispatchStatus" />
+        </EntityContainer>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PassengerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TaxId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Start_Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Start_Latitude" Type="Double" />
+          <Property Name="Start_Longitude" Type="Double" />
+          <Property Name="Target_Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Target_Latitude" Type="Double" />
+          <Property Name="Target_Longitude" Type="Double" />
+          <Property Name="Distance" Type="Int32" />
+          <Property Name="EstimatedFare" Type="Int32" />
+          <Property Name="EstimatedTime" Type="Int32" />
+          <Property Name="ProcessStatus" Type="Byte" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="DeviceId" Type="Int32" />
+          <Property Name="AcceptTime" Type="DateTime" Precision="3" />
+          <Property Name="IsCancel" Type="Boolean" Nullable="false" />
+          <Property Name="CancelBy" Type="Int32" />
+          <Property Name="CancelTime" Type="DateTime" Precision="3" />
+          <Property Name="OrderNo" Type="Guid" />
+          <Property Name="TaxiId" Type="Int32" />
+          <Property Name="DriverId" Type="Int32" />
+          <Property Name="CompanyName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceId" Type="Int32" />
+          <Property Name="AdditionMessage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BuyerIdentifier" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TaxiCompanyGroupId" Type="Int32" />
+          <Property Name="CreateAccount" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="GetBookingById_Result">
+          <Property Type="Int32" Name="BookingId" Nullable="false" />
+          <Property Type="DateTime" Name="BookingDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="PassengerId" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Start_Address" Nullable="true" MaxLength="128" />
+          <Property Type="Double" Name="Start_Latitude" Nullable="true" />
+          <Property Type="Double" Name="Start_Longitude" Nullable="true" />
+          <Property Type="String" Name="Target_Address" Nullable="true" MaxLength="128" />
+          <Property Type="Double" Name="Target_Latitude" Nullable="true" />
+          <Property Type="Double" Name="Target_Longitude" Nullable="true" />
+          <Property Type="Int32" Name="Distance" Nullable="false" />
+          <Property Type="Int32" Name="EstimatedFare" Nullable="false" />
+          <Property Type="Int32" Name="EstimatedTime" Nullable="false" />
+          <Property Type="Byte" Name="ProcessStatus" Nullable="true" />
+          <Property Type="String" Name="CNProcessStatus" Nullable="false" MaxLength="8" />
+          <Property Type="Int32" Name="FlowStatus" Nullable="true" />
+          <Property Type="String" Name="CNFlowStatus" Nullable="false" MaxLength="8" />
+          <Property Type="Boolean" Name="IsCancel" Nullable="false" />
+          <Property Type="Int32" Name="CancelBy" Nullable="true" />
+          <Property Type="DateTime" Name="CancelTime" Nullable="true" Precision="23" />
+          <Property Type="Guid" Name="OrderNo" Nullable="true" />
+          <Property Type="Int32" Name="TaxiId" Nullable="true" />
+          <Property Type="Int32" Name="DriverId" Nullable="true" />
+          <Property Type="Int32" Name="ServiceId" Nullable="true" />
+          <Property Type="String" Name="AdditionMessage" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="TaxiCompanyGroupId" Nullable="true" />
+          <Property Type="String" Name="CreateAccount" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="PassengerNumber" Nullable="true" />
+          <Property Type="Boolean" Name="CanCarpool" Nullable="false" />
+          <Property Type="String" Name="EstimateRouter" Nullable="true" />
+          <Property Type="Int32" Name="Allowable" Nullable="true" />
+          <Property Type="Int32" Name="PutTripId" Nullable="true" />
+          <Property Type="Int32" Name="TicketType" Nullable="false" />
+          <Property Type="String" Name="RoundTripNo" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="TripType" Nullable="false" />
+          <Property Type="Int32" Name="TripPurpose" Nullable="true" />
+          <Property Type="Int32" Name="Escort" Nullable="false" />
+          <Property Type="Int32" Name="TripStatus" Nullable="true" />
+          <Property Type="String" Name="GetonRemark" Nullable="true" />
+          <Property Type="String" Name="GetoffRemark" Nullable="true" />
+          <Property Type="DateTime" Name="insDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="insUserId" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="updUserId" Nullable="true" MaxLength="128" />
+          <Property Type="DateTime" Name="updDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="RealName" Nullable="true" />
+          <Property Type="String" Name="Local_Calls" Nullable="false" />
+          <Property Type="String" Name="Phone_Calls" Nullable="false" />
+          <Property Type="String" Name="PhoneNumber" Nullable="false" />
+          <Property Type="String" Name="DriverName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="LicensePlateNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TaxiCallNo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="IdentityNumber" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RealName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Local_Calls" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone_Calls" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Birth" Type="DateTime" Precision="3" />
+          <Property Name="IsEnterprise" Type="Boolean" Nullable="false" />
+          <Property Name="TaxId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Newsletter" Type="Boolean" Nullable="false" />
+          <Property Name="SMSletter" Type="Boolean" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterDate" Type="DateTime" Precision="3" />
+          <Property Name="resetPW" Type="Boolean" />
+          <Property Name="TaxiCompanyGroupId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DispatchStatus">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DeviceId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="OrderTime" Type="DateTime" Precision="3" />
+          <Property Name="DispatchTime" Type="DateTime" Precision="3" />
+          <Property Name="IsCancel" Type="Boolean" />
+          <Property Name="CancelFrom" Type="Int32" />
+          <Property Name="FlowStatus" Type="Int32" />
+          <Property Name="GetonTime" Type="DateTime" Precision="3" />
+          <Property Name="GetoffTime" Type="DateTime" Precision="3" />
+          <Property Name="ArrivalTime" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="PromiseMinute" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BarrierFreePassengerModelStoreContainer" CdmEntityContainer="BarrierFreePassengerEntities">
+          <EntitySetMapping Name="UserExtendBarriers">
+            <EntityTypeMapping TypeName="BarrierFreePassengerModel.UserExtendBarriers">
+              <MappingFragment StoreEntitySet="UserExtendBarriers">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Economic" ColumnName="Economic" />
+                <ScalarProperty Name="FullPayment" ColumnName="FullPayment" />
+                <ScalarProperty Name="Aborigines" ColumnName="Aborigines" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="PostalCode1" ColumnName="PostalCode1" />
+                <ScalarProperty Name="PostalCode2" ColumnName="PostalCode2" />
+                <ScalarProperty Name="BarriersManual" ColumnName="BarriersManual" />
+                <ScalarProperty Name="DateOfExpiry" ColumnName="DateOfExpiry" />
+                <ScalarProperty Name="BarriersLevel" ColumnName="BarriersLevel" />
+                <ScalarProperty Name="BarriersCategory" ColumnName="BarriersCategory" />
+                <ScalarProperty Name="BarriersCode" ColumnName="BarriersCode" />
+                <ScalarProperty Name="Diagnostic" ColumnName="Diagnostic" />
+                <ScalarProperty Name="ReservationDays" ColumnName="ReservationDays" />
+                <ScalarProperty Name="SuspensionBegin" ColumnName="SuspensionBegin" />
+                <ScalarProperty Name="SuspensionEnd" ColumnName="SuspensionEnd" />
+                <ScalarProperty Name="CarPool" ColumnName="CarPool" />
+                <ScalarProperty Name="Wheelchair" ColumnName="Wheelchair" />
+                <ScalarProperty Name="WheelchairCategory" ColumnName="WheelchairCategory" />
+                <ScalarProperty Name="VisualDisturbance" ColumnName="VisualDisturbance" />
+                <ScalarProperty Name="isLongCare" ColumnName="isLongCare" />
+                <ScalarProperty Name="LongTermDisability" ColumnName="LongTermDisability" />
+                <ScalarProperty Name="RelationshipName" ColumnName="RelationshipName" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="EmergencyPhone" ColumnName="EmergencyPhone" />
+                <ScalarProperty Name="DisabilityPhoto" ColumnName="DisabilityPhoto" />
+                <ScalarProperty Name="EconomicStatusPhoto" ColumnName="EconomicStatusPhoto" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="isDisabled" ColumnName="isDisabled" />
+                <ScalarProperty Name="DisabledTime" ColumnName="DisabledTime" />
+                <ScalarProperty Name="insDateTime" ColumnName="insDateTime" />
+                <ScalarProperty Name="updDateTime" ColumnName="updDateTime" />
+                <ScalarProperty Name="SubsidyLimitAmtMon" ColumnName="SubsidyLimitAmtMon" />
+                <ScalarProperty Name="SubsidyTripMon" ColumnName="SubsidyTripMon" />
+                <ScalarProperty Name="OnlineBooking" ColumnName="OnlineBooking" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Booking">
+            <EntityTypeMapping TypeName="BarrierFreePassengerModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="CreateAccount" ColumnName="CreateAccount" />
+                <ScalarProperty Name="TaxiCompanyGroupId" ColumnName="TaxiCompanyGroupId" />
+                <ScalarProperty Name="BuyerIdentifier" ColumnName="BuyerIdentifier" />
+                <ScalarProperty Name="AdditionMessage" ColumnName="AdditionMessage" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+                <ScalarProperty Name="TaxiId" ColumnName="TaxiId" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="CancelTime" ColumnName="CancelTime" />
+                <ScalarProperty Name="CancelBy" ColumnName="CancelBy" />
+                <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+                <ScalarProperty Name="AcceptTime" ColumnName="AcceptTime" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ProcessStatus" ColumnName="ProcessStatus" />
+                <ScalarProperty Name="EstimatedTime" ColumnName="EstimatedTime" />
+                <ScalarProperty Name="EstimatedFare" ColumnName="EstimatedFare" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Target_Longitude" ColumnName="Target_Longitude" />
+                <ScalarProperty Name="Target_Latitude" ColumnName="Target_Latitude" />
+                <ScalarProperty Name="Target_Address" ColumnName="Target_Address" />
+                <ScalarProperty Name="Start_Longitude" ColumnName="Start_Longitude" />
+                <ScalarProperty Name="Start_Latitude" ColumnName="Start_Latitude" />
+                <ScalarProperty Name="Start_Address" ColumnName="Start_Address" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="PassengerId" ColumnName="PassengerId" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="BarrierFreePassengerModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="TaxiCompanyGroupId" ColumnName="TaxiCompanyGroupId" />
+                <ScalarProperty Name="resetPW" ColumnName="resetPW" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SMSletter" ColumnName="SMSletter" />
+                <ScalarProperty Name="Newsletter" ColumnName="Newsletter" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="IsEnterprise" ColumnName="IsEnterprise" />
+                <ScalarProperty Name="Birth" ColumnName="Birth" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Phone_Calls" ColumnName="Phone_Calls" />
+                <ScalarProperty Name="Local_Calls" ColumnName="Local_Calls" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DispatchStatus">
+            <EntityTypeMapping TypeName="BarrierFreePassengerModel.DispatchStatus">
+              <MappingFragment StoreEntitySet="DispatchStatus">
+                <ScalarProperty Name="PromiseMinute" ColumnName="PromiseMinute" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+                <ScalarProperty Name="GetoffTime" ColumnName="GetoffTime" />
+                <ScalarProperty Name="GetonTime" ColumnName="GetonTime" />
+                <ScalarProperty Name="FlowStatus" ColumnName="FlowStatus" />
+                <ScalarProperty Name="CancelFrom" ColumnName="CancelFrom" />
+                <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+                <ScalarProperty Name="DispatchTime" ColumnName="DispatchTime" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f88ff09809204538a9436d098abc2815" Name="Diagram1">
+        <EntityTypeShape EntityType="BarrierFreeTMSModel.Clients" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarrierFreeTMSModel.MobilePushKey" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarrierFreeTMSModel.PutTrip" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarrierFreeTMSModel.AspNetUsers" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="BarrierFreeTMSModel.Taxi" Width="1.5" PointX="7.375" PointY="1.125" />
+        <EntityTypeShape EntityType="BarrierFreeTMSModel.TaxiDriver" Width="1.5" PointX="9.625" PointY="2.25" />
+        <AssociationConnector Association="BarrierFreeTMSModel.FK_TaxiDriver_Taxi" />
+        <EntityTypeShape EntityType="BarrierFreeTMSModel.Driver" Width="1.5" PointX="7.375" PointY="8.25" />
+        <AssociationConnector Association="BarrierFreeTMSModel.FK_TaxiDriver_Driver" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

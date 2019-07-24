@@ -1,0 +1,629 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BarrierFreeTMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="NickName" Type="nvarchar(max)" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="Contact" Type="nvarchar(max)" />
+          <Property Name="WebSite" Type="nvarchar(max)" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="CreateUserId" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="resetPW" Type="bit" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Secret" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ApplicationType" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="RefreshTokenLifeTime" Type="int" Nullable="false" />
+          <Property Name="AllowedOrigin" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="DriverId" />
+          </Key>
+          <Property Name="DriverId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdentityNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="DriverName" Type="nvarchar" MaxLength="20" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="BloodTypeId" Type="int" />
+          <Property Name="PAddress" Type="nvarchar" MaxLength="128" />
+          <Property Name="LAddress" Type="nvarchar" MaxLength="128" />
+          <Property Name="HomeTelNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="LicenseTypeId" Type="int" />
+          <Property Name="LicenseNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="LicenseTakeDate" Type="datetime" />
+          <Property Name="LicenseFialDate" Type="datetime" />
+          <Property Name="RegistrationNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="RegistrationDate" Type="datetime" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="TaxiCompanyGroupId" Type="int" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="PersonalPhoto" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdentityPhoto" Type="nvarchar" MaxLength="100" />
+          <Property Name="LicensePhoto" Type="nvarchar" MaxLength="100" />
+          <Property Name="RegistrationPhoto" Type="nvarchar" MaxLength="100" />
+          <Property Name="EvaluationNumber" Type="int" />
+          <Property Name="Rank" Type="float" />
+          <Property Name="MVPNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="drvState" Type="int" />
+          <Property Name="openDate" Type="datetime" />
+          <Property Name="quitDate" Type="datetime" />
+          <Property Name="SuspensionDate" Type="datetime" />
+          <Property Name="NeverHire" Type="bit" />
+          <Property Name="RejoinDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MobilePushKey">
+          <Key>
+            <PropertyRef Name="MobileKeyId" />
+          </Key>
+          <Property Name="MobileKeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="KeyNumber" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="MobileType" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="InsTime" Type="datetime" />
+          <Property Name="updTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PutTrip">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="date" />
+          <Property Name="tempname" Type="nvarchar" MaxLength="100" />
+          <Property Name="tripId" Type="char" MaxLength="14" />
+          <Property Name="type" Type="bit" />
+          <Property Name="AuthorizeType" Type="int" />
+          <Property Name="H0001" Type="varchar" MaxLength="50" />
+          <Property Name="H0102" Type="varchar" MaxLength="50" />
+          <Property Name="H0203" Type="varchar" MaxLength="50" />
+          <Property Name="H0304" Type="varchar" MaxLength="50" />
+          <Property Name="H0405" Type="varchar" MaxLength="50" />
+          <Property Name="H0506" Type="varchar" MaxLength="50" />
+          <Property Name="H0607" Type="varchar" MaxLength="50" />
+          <Property Name="H0708" Type="varchar" MaxLength="50" />
+          <Property Name="H0809" Type="varchar" MaxLength="50" />
+          <Property Name="H0910" Type="varchar" MaxLength="50" />
+          <Property Name="H1011" Type="varchar" MaxLength="50" />
+          <Property Name="H1112" Type="varchar" MaxLength="50" />
+          <Property Name="H1213" Type="varchar" MaxLength="50" />
+          <Property Name="H1314" Type="varchar" MaxLength="50" />
+          <Property Name="H1415" Type="varchar" MaxLength="50" />
+          <Property Name="H1516" Type="varchar" MaxLength="50" />
+          <Property Name="H1617" Type="varchar" MaxLength="50" />
+          <Property Name="H1718" Type="varchar" MaxLength="50" />
+          <Property Name="H1819" Type="varchar" MaxLength="50" />
+          <Property Name="H1920" Type="varchar" MaxLength="50" />
+          <Property Name="H2021" Type="varchar" MaxLength="50" />
+          <Property Name="H2122" Type="varchar" MaxLength="50" />
+          <Property Name="H2223" Type="varchar" MaxLength="50" />
+          <Property Name="H2300" Type="varchar" MaxLength="50" />
+          <Property Name="username" Type="nvarchar" MaxLength="256" />
+          <Property Name="groupId" Type="int" />
+          <Property Name="createTime" Type="datetime" />
+          <Property Name="updateTime" Type="datetime" />
+          <Property Name="isClose" Type="bit" />
+        </EntityType>
+        <EntityType Name="Taxi">
+          <Key>
+            <PropertyRef Name="TaxiId" />
+          </Key>
+          <Property Name="TaxiId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LicensePlateNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="CarModelId" Type="int" />
+          <Property Name="CarBodyNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaxiCallNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="ManufactureDate" Type="datetime" />
+          <Property Name="TaxiCompanyId" Type="int" />
+          <Property Name="CarHeaderPhoto" Type="nvarchar" MaxLength="50" />
+          <Property Name="LeftSidePhoto" Type="nvarchar" MaxLength="50" />
+          <Property Name="RightSidePhoto" Type="nvarchar" MaxLength="50" />
+          <Property Name="RearPhoto" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsideFrontPhoto" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsideBackPhoto" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeviceId" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="LastTaxiStopId" Type="int" />
+          <Property Name="LastEntryDTime" Type="datetime" />
+          <Property Name="ParkingLot" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalMilage" Type="decimal" Precision="9" Scale="2" />
+        </EntityType>
+        <EntityType Name="TaxiDriver">
+          <Key>
+            <PropertyRef Name="TaxiDriverId" />
+          </Key>
+          <Property Name="TaxiDriverId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DriverId" Type="int" />
+          <Property Name="TaxiId" Type="int" />
+          <Property Name="LoginTime" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="LogoutTime" Type="datetime" />
+          <Property Name="LoginMilage" Type="decimal" Precision="9" Scale="1" />
+          <Property Name="ReturnMilage" Type="decimal" Precision="9" Scale="1" />
+        </EntityType>
+        <Association Name="FK_TaxiDriver_Driver">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="0..1" />
+          <End Role="TaxiDriver" Type="Self.TaxiDriver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverId" />
+            </Principal>
+            <Dependent Role="TaxiDriver">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaxiDriver_Taxi">
+          <End Role="Taxi" Type="Self.Taxi" Multiplicity="0..1" />
+          <End Role="TaxiDriver" Type="Self.TaxiDriver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taxi">
+              <PropertyRef Name="TaxiId" />
+            </Principal>
+            <Dependent Role="TaxiDriver">
+              <PropertyRef Name="TaxiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BarrierFreeTMSModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MobilePushKey" EntityType="Self.MobilePushKey" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PutTrip" EntityType="Self.PutTrip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Taxi" EntityType="Self.Taxi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaxiDriver" EntityType="Self.TaxiDriver" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TaxiDriver_Driver" Association="Self.FK_TaxiDriver_Driver">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="TaxiDriver" EntitySet="TaxiDriver" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaxiDriver_Taxi" Association="Self.FK_TaxiDriver_Taxi">
+            <End Role="Taxi" EntitySet="Taxi" />
+            <End Role="TaxiDriver" EntitySet="TaxiDriver" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BarrierFreeTMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Secret" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApplicationType" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="RefreshTokenLifeTime" Type="Int32" Nullable="false" />
+          <Property Name="AllowedOrigin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MobilePushKey">
+          <Key>
+            <PropertyRef Name="MobileKeyId" />
+          </Key>
+          <Property Name="MobileKeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KeyNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MobileType" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="InsTime" Type="DateTime" Precision="3" />
+          <Property Name="updTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PutTrip">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="tempname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tripId" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="type" Type="Boolean" />
+          <Property Name="AuthorizeType" Type="Int32" />
+          <Property Name="H0001" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H0102" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H0203" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H0304" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H0405" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H0506" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H0607" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H0708" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H0809" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H0910" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H1011" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H1112" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H1213" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H1314" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H1415" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H1516" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H1617" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H1718" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H1819" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H1920" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H2021" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H2122" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H2223" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H2300" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="groupId" Type="Int32" />
+          <Property Name="createTime" Type="DateTime" Precision="3" />
+          <Property Name="updateTime" Type="DateTime" Precision="3" />
+          <Property Name="isClose" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="BarrierFreeTMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="MobilePushKey" EntityType="Self.MobilePushKey" />
+          <EntitySet Name="PutTrip" EntityType="Self.PutTrip" />
+          <EntitySet Name="AspNetUsers" EntityType="BarrierFreeTMSModel.AspNetUsers" />
+          <EntitySet Name="Taxi" EntityType="BarrierFreeTMSModel.Taxi" />
+          <EntitySet Name="TaxiDriver" EntityType="BarrierFreeTMSModel.TaxiDriver" />
+          <AssociationSet Name="FK_TaxiDriver_Taxi" Association="BarrierFreeTMSModel.FK_TaxiDriver_Taxi">
+            <End Role="Taxi" EntitySet="Taxi" />
+            <End Role="TaxiDriver" EntitySet="TaxiDriver" />
+          </AssociationSet>
+          <EntitySet Name="Driver" EntityType="BarrierFreeTMSModel.Driver" />
+          <AssociationSet Name="FK_TaxiDriver_Driver" Association="BarrierFreeTMSModel.FK_TaxiDriver_Driver">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="TaxiDriver" EntitySet="TaxiDriver" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebSite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="resetPW" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Taxi">
+          <Key>
+            <PropertyRef Name="TaxiId" />
+          </Key>
+          <Property Name="TaxiId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LicensePlateNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CarModelId" Type="Int32" />
+          <Property Name="CarBodyNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaxiCallNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="ManufactureDate" Type="DateTime" Precision="3" />
+          <Property Name="TaxiCompanyId" Type="Int32" />
+          <Property Name="CarHeaderPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LeftSidePhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RightSidePhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RearPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsideFrontPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsideBackPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeviceId" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="LastTaxiStopId" Type="Int32" />
+          <Property Name="LastEntryDTime" Type="DateTime" Precision="3" />
+          <Property Name="ParkingLot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalMilage" Type="Decimal" Precision="9" Scale="2" />
+          <NavigationProperty Name="TaxiDriver" Relationship="BarrierFreeTMSModel.FK_TaxiDriver_Taxi" FromRole="Taxi" ToRole="TaxiDriver" />
+        </EntityType>
+        <EntityType Name="TaxiDriver">
+          <Key>
+            <PropertyRef Name="TaxiDriverId" />
+          </Key>
+          <Property Name="TaxiDriverId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DriverId" Type="Int32" />
+          <Property Name="TaxiId" Type="Int32" />
+          <Property Name="LoginTime" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="LogoutTime" Type="DateTime" Precision="3" />
+          <Property Name="LoginMilage" Type="Decimal" Precision="9" Scale="1" />
+          <Property Name="ReturnMilage" Type="Decimal" Precision="9" Scale="1" />
+          <NavigationProperty Name="Taxi" Relationship="BarrierFreeTMSModel.FK_TaxiDriver_Taxi" FromRole="TaxiDriver" ToRole="Taxi" />
+          <NavigationProperty Name="Driver" Relationship="BarrierFreeTMSModel.FK_TaxiDriver_Driver" FromRole="TaxiDriver" ToRole="Driver" />
+        </EntityType>
+        <Association Name="FK_TaxiDriver_Taxi">
+          <End Type="BarrierFreeTMSModel.Taxi" Role="Taxi" Multiplicity="0..1" />
+          <End Type="BarrierFreeTMSModel.TaxiDriver" Role="TaxiDriver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taxi">
+              <PropertyRef Name="TaxiId" />
+            </Principal>
+            <Dependent Role="TaxiDriver">
+              <PropertyRef Name="TaxiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="DriverId" />
+          </Key>
+          <Property Name="DriverId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdentityNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DriverName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+          <Property Name="BloodTypeId" Type="Int32" />
+          <Property Name="PAddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LAddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="HomeTelNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="LicenseTypeId" Type="Int32" />
+          <Property Name="LicenseNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LicenseTakeDate" Type="DateTime" Precision="3" />
+          <Property Name="LicenseFialDate" Type="DateTime" Precision="3" />
+          <Property Name="RegistrationNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+          <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TaxiCompanyGroupId" Type="Int32" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PersonalPhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdentityPhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LicensePhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationPhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EvaluationNumber" Type="Int32" />
+          <Property Name="Rank" Type="Double" />
+          <Property Name="MVPNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="drvState" Type="Int32" />
+          <Property Name="openDate" Type="DateTime" Precision="3" />
+          <Property Name="quitDate" Type="DateTime" Precision="3" />
+          <Property Name="SuspensionDate" Type="DateTime" Precision="3" />
+          <Property Name="NeverHire" Type="Boolean" />
+          <Property Name="RejoinDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TaxiDriver" Relationship="BarrierFreeTMSModel.FK_TaxiDriver_Driver" FromRole="Driver" ToRole="TaxiDriver" />
+        </EntityType>
+        <Association Name="FK_TaxiDriver_Driver">
+          <End Type="BarrierFreeTMSModel.Driver" Role="Driver" Multiplicity="0..1" />
+          <End Type="BarrierFreeTMSModel.TaxiDriver" Role="TaxiDriver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverId" />
+            </Principal>
+            <Dependent Role="TaxiDriver">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BarrierFreeTMSModelStoreContainer" CdmEntityContainer="BarrierFreeTMSEntities">
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="BarrierFreeTMSModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Secret" ColumnName="Secret" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="RefreshTokenLifeTime" ColumnName="RefreshTokenLifeTime" />
+                <ScalarProperty Name="AllowedOrigin" ColumnName="AllowedOrigin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MobilePushKey">
+            <EntityTypeMapping TypeName="BarrierFreeTMSModel.MobilePushKey">
+              <MappingFragment StoreEntitySet="MobilePushKey">
+                <ScalarProperty Name="MobileKeyId" ColumnName="MobileKeyId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="KeyNumber" ColumnName="KeyNumber" />
+                <ScalarProperty Name="MobileType" ColumnName="MobileType" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="InsTime" ColumnName="InsTime" />
+                <ScalarProperty Name="updTime" ColumnName="updTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PutTrip">
+            <EntityTypeMapping TypeName="BarrierFreeTMSModel.PutTrip">
+              <MappingFragment StoreEntitySet="PutTrip">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="tempname" ColumnName="tempname" />
+                <ScalarProperty Name="tripId" ColumnName="tripId" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="AuthorizeType" ColumnName="AuthorizeType" />
+                <ScalarProperty Name="H0001" ColumnName="H0001" />
+                <ScalarProperty Name="H0102" ColumnName="H0102" />
+                <ScalarProperty Name="H0203" ColumnName="H0203" />
+                <ScalarProperty Name="H0304" ColumnName="H0304" />
+                <ScalarProperty Name="H0405" ColumnName="H0405" />
+                <ScalarProperty Name="H0506" ColumnName="H0506" />
+                <ScalarProperty Name="H0607" ColumnName="H0607" />
+                <ScalarProperty Name="H0708" ColumnName="H0708" />
+                <ScalarProperty Name="H0809" ColumnName="H0809" />
+                <ScalarProperty Name="H0910" ColumnName="H0910" />
+                <ScalarProperty Name="H1011" ColumnName="H1011" />
+                <ScalarProperty Name="H1112" ColumnName="H1112" />
+                <ScalarProperty Name="H1213" ColumnName="H1213" />
+                <ScalarProperty Name="H1314" ColumnName="H1314" />
+                <ScalarProperty Name="H1415" ColumnName="H1415" />
+                <ScalarProperty Name="H1516" ColumnName="H1516" />
+                <ScalarProperty Name="H1617" ColumnName="H1617" />
+                <ScalarProperty Name="H1718" ColumnName="H1718" />
+                <ScalarProperty Name="H1819" ColumnName="H1819" />
+                <ScalarProperty Name="H1920" ColumnName="H1920" />
+                <ScalarProperty Name="H2021" ColumnName="H2021" />
+                <ScalarProperty Name="H2122" ColumnName="H2122" />
+                <ScalarProperty Name="H2223" ColumnName="H2223" />
+                <ScalarProperty Name="H2300" ColumnName="H2300" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="createTime" ColumnName="createTime" />
+                <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+                <ScalarProperty Name="isClose" ColumnName="isClose" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="BarrierFreeTMSModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="resetPW" ColumnName="resetPW" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Taxi">
+            <EntityTypeMapping TypeName="BarrierFreeTMSModel.Taxi">
+              <MappingFragment StoreEntitySet="Taxi">
+                <ScalarProperty Name="TotalMilage" ColumnName="TotalMilage" />
+                <ScalarProperty Name="ParkingLot" ColumnName="ParkingLot" />
+                <ScalarProperty Name="LastEntryDTime" ColumnName="LastEntryDTime" />
+                <ScalarProperty Name="LastTaxiStopId" ColumnName="LastTaxiStopId" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="InsideBackPhoto" ColumnName="InsideBackPhoto" />
+                <ScalarProperty Name="InsideFrontPhoto" ColumnName="InsideFrontPhoto" />
+                <ScalarProperty Name="RearPhoto" ColumnName="RearPhoto" />
+                <ScalarProperty Name="RightSidePhoto" ColumnName="RightSidePhoto" />
+                <ScalarProperty Name="LeftSidePhoto" ColumnName="LeftSidePhoto" />
+                <ScalarProperty Name="CarHeaderPhoto" ColumnName="CarHeaderPhoto" />
+                <ScalarProperty Name="TaxiCompanyId" ColumnName="TaxiCompanyId" />
+                <ScalarProperty Name="ManufactureDate" ColumnName="ManufactureDate" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="TaxiCallNo" ColumnName="TaxiCallNo" />
+                <ScalarProperty Name="CarBodyNo" ColumnName="CarBodyNo" />
+                <ScalarProperty Name="CarModelId" ColumnName="CarModelId" />
+                <ScalarProperty Name="LicensePlateNumber" ColumnName="LicensePlateNumber" />
+                <ScalarProperty Name="TaxiId" ColumnName="TaxiId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaxiDriver">
+            <EntityTypeMapping TypeName="BarrierFreeTMSModel.TaxiDriver">
+              <MappingFragment StoreEntitySet="TaxiDriver">
+                <ScalarProperty Name="ReturnMilage" ColumnName="ReturnMilage" />
+                <ScalarProperty Name="LoginMilage" ColumnName="LoginMilage" />
+                <ScalarProperty Name="LogoutTime" ColumnName="LogoutTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="TaxiId" ColumnName="TaxiId" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+                <ScalarProperty Name="TaxiDriverId" ColumnName="TaxiDriverId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Driver">
+            <EntityTypeMapping TypeName="BarrierFreeTMSModel.Driver">
+              <MappingFragment StoreEntitySet="Driver">
+                <ScalarProperty Name="RejoinDate" ColumnName="RejoinDate" />
+                <ScalarProperty Name="NeverHire" ColumnName="NeverHire" />
+                <ScalarProperty Name="SuspensionDate" ColumnName="SuspensionDate" />
+                <ScalarProperty Name="quitDate" ColumnName="quitDate" />
+                <ScalarProperty Name="openDate" ColumnName="openDate" />
+                <ScalarProperty Name="drvState" ColumnName="drvState" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="MVPNo" ColumnName="MVPNo" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="EvaluationNumber" ColumnName="EvaluationNumber" />
+                <ScalarProperty Name="RegistrationPhoto" ColumnName="RegistrationPhoto" />
+                <ScalarProperty Name="LicensePhoto" ColumnName="LicensePhoto" />
+                <ScalarProperty Name="IdentityPhoto" ColumnName="IdentityPhoto" />
+                <ScalarProperty Name="PersonalPhoto" ColumnName="PersonalPhoto" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TaxiCompanyGroupId" ColumnName="TaxiCompanyGroupId" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
+                <ScalarProperty Name="LicenseFialDate" ColumnName="LicenseFialDate" />
+                <ScalarProperty Name="LicenseTakeDate" ColumnName="LicenseTakeDate" />
+                <ScalarProperty Name="LicenseNo" ColumnName="LicenseNo" />
+                <ScalarProperty Name="LicenseTypeId" ColumnName="LicenseTypeId" />
+                <ScalarProperty Name="HomeTelNo" ColumnName="HomeTelNo" />
+                <ScalarProperty Name="LAddress" ColumnName="LAddress" />
+                <ScalarProperty Name="PAddress" ColumnName="PAddress" />
+                <ScalarProperty Name="BloodTypeId" ColumnName="BloodTypeId" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="IdentityNo" ColumnName="IdentityNo" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
